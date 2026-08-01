@@ -42,6 +42,7 @@
   .masthead-sub{ color:var(--text-mid); font-size:15px; margin:0 0 4px; }
   .spine{ font-family:'DM Mono', monospace; font-size:11px; color:var(--text-low); margin-top:16px; line-height:2; border-top:1px solid var(--hairline); padding-top:12px; }
   .spine b{ color:var(--violet); font-weight:500; }
+  .spine .alt{ color:var(--amber); }
 
   .epigraph{ max-width:980px; margin:0 auto 36px; padding:0 28px; font-family:'DM Serif Display', serif; font-style:italic; font-size:16px; color:var(--amber); opacity:.85; }
 
@@ -65,6 +66,7 @@
   .figure-cap{ font-family:'DM Mono', monospace; font-size:11px; color:var(--text-low); text-align:center; margin-top:14px; letter-spacing:.03em; }
   .pentad-wheel{ display:block; margin:0 auto; max-width:460px; width:100%; height:auto; }
   .pw-label{ font-family:'DM Mono', monospace; font-size:11.5px; fill:var(--text-mid); }
+  .pw-label-alt{ font-family:'DM Mono', monospace; font-size:10px; fill:var(--amber); }
   .pw-numeral{ font-family:'DM Serif Display', serif; font-style:italic; font-size:15px; fill:var(--amber); }
   .pw-ring{ fill:none; stroke:var(--hairline); stroke-width:1; }
   .pw-node{ fill:var(--bg-inset); stroke:var(--violet); stroke-width:1.4; }
@@ -75,6 +77,7 @@
   table{ width:100%; border-collapse:collapse; min-width:920px; }
   thead th{ font-family:'DM Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--amber); text-align:left; padding:12px 12px; border-bottom:2px solid var(--hairline); background:var(--bg-inset); }
   thead th:first-child{ width:150px; }
+  thead th .th-alt{ display:block; color:var(--violet); font-size:9px; letter-spacing:.05em; margin-top:3px; text-transform:none; }
   tbody th{ text-align:left; font-family:'DM Sans', sans-serif; font-weight:600; font-size:13.5px; color:var(--text-hi); padding:12px; border-bottom:1px solid var(--hairline); vertical-align:top; white-space:nowrap; }
   tbody td{ font-size:12.5px; color:var(--text-mid); padding:12px; border-bottom:1px solid var(--hairline); vertical-align:top; line-height:1.5; }
   tbody tr:last-child th, tbody tr:last-child td{ border-bottom:none; }
@@ -88,6 +91,8 @@
   .callout p{ margin:0 0 10px; color:var(--text-mid); font-size:14.5px; line-height:1.6; }
   .callout p:last-child{ margin-bottom:0; }
   .callout code{ font-family:'DM Mono', monospace; background:var(--bg-inset); border:1px solid var(--hairline); border-radius:4px; padding:1px 6px; color:var(--teal); font-size:13px; }
+  .callout.alt{ border-left-color:var(--amber); }
+  .callout.alt .eyebrow{ color:var(--amber); }
 
   /* Lecture cards */
   .lecture{ margin-bottom:56px; }
@@ -120,7 +125,8 @@
     <p class="masthead-sub">Ledger 015 · Aug 01 2026 · Six Norton Lectures situated inside a shared-II pentad</p>
     <div class="spine">
       <b>I</b> Territory → <b>II</b> Mapped Code → <b>III</b> Surprise / Colony → <b>IV</b> SoftMax / Explorers → <b>V</b> Falsifiable / Cadence<br>
-      Surprise presupposes a shared II. Without it, IV's softmax computes uncertainty over the wrong hypothesis space.
+      Surprise presupposes a shared II. Without it, IV's softmax computes uncertainty over the wrong hypothesis space.<br>
+      <span class="alt">Same cycle, abductive gloss —</span> <b class="alt">I</b> Observed → <b class="alt">II</b> Expected → <b class="alt">III</b> Mismatch → <b class="alt">IV</b> Hypotheses → <b class="alt">V</b> Trial
     </div>
   </div>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
@@ -140,6 +146,13 @@
     <code>IV</code> a softmax held open across live candidate interpretations, <code>V</code> the falsifiable cadence
     that closes — or, in two marked cases below, fails to close cleanly — the cycle.
   </p>
+
+  <div class="callout alt">
+    <span class="eyebrow">A second name for the same five slots</span>
+    <p>The wheel below reads two ways at once. <code>I → II → III → IV → V</code> is the musical-perception cycle already in place. Underneath it runs the same skeleton in its bare epistemic form — the shape any disciplined noticing takes, whether the domain is a symphony or a spilled cup of sugar:</p>
+    <p><code>Observed</code> (I) is the raw reading, before any frame is applied. <code>Expected</code> (II) is the shared code that reading gets checked against — the diatonic ear, the pheromone trail, the prior. <code>Mismatch</code> (III) is not noise and not confirmation; it's <code>Observed</code> refusing to fit <code>Expected</code>, and it is only legible as mismatch because <code>Expected</code> was held with some confidence to begin with. <code>Hypotheses</code> (IV) is the softmax proper — several live candidate explanations weighted, none yet collapsed. <code>Trial</code> (V) is the falsifiable move that collapses them: a performance, a re-check of the floor, a listened-through cadence.</p>
+    <p>Framed this way, the two amber breaks in the table below are the same failure stated twice: Tristan (4/III) skips straight to <code>Mismatch</code> without saying what <code>Expected</code> it's measured against; Mahler 9 (5/V) asserts a <code>Trial</code>-result with no <code>Hypotheses</code> stage shown first. Both are the cycle entered mid-loop.</p>
+  </div>
 
   <div class="figure-wrap">
     <svg class="pentad-wheel" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
@@ -171,8 +184,13 @@
       <text class="pw-label" x="360" y="420" text-anchor="middle">Surprise / Colony</text>
       <text class="pw-label" x="100" y="420" text-anchor="middle">SoftMax / Explorers</text>
       <text class="pw-label" x="20" y="150" text-anchor="end">Falsifiable / Cadence</text>
+      <text class="pw-label-alt" x="230" y="30" text-anchor="middle">Observed</text>
+      <text class="pw-label-alt" x="440" y="164" text-anchor="start">Expected</text>
+      <text class="pw-label-alt" x="360" y="398" text-anchor="middle">Mismatch</text>
+      <text class="pw-label-alt" x="100" y="398" text-anchor="middle">Hypotheses</text>
+      <text class="pw-label-alt" x="20" y="164" text-anchor="end">Trial</text>
     </svg>
-    <p class="figure-cap">Fig. 1 — the pentad as a closed cycle. III's surprise-event is only well-defined relative to the II two parties already share; break that link and IV inherits a miscalibrated softmax.</p>
+    <p class="figure-cap">Fig. 1 — the pentad as a closed cycle, doubly labeled: teal for the musical-perception reading, amber for the underlying Observed → Expected → Mismatch → Hypotheses → Trial skeleton. III's surprise/mismatch is only well-defined relative to the II/Expected two parties already share; break that link and IV's softmax/hypotheses inherits a miscalibrated support set.</p>
   </div>
 
   <div class="callout">
@@ -180,6 +198,7 @@
     <p>You spill sugar. Ants find it. Over hours, foot traffic reinforces the pheromone trail — <code>II</code> — until it's a strong, two-way highway back to the mess. You wipe the sugar away.</p>
     <p>The colony keeps running the highway. That is the surprise-defining condition: <code>strong II</code> (a well-reinforced, high-confidence code) meeting a <code>I</code> that no longer matches what <code>II</code> predicts. No sugar, but the trail still says <em>sugar</em>. That mismatch — not the trail's mere existence, not the ants' mere presence — is <code>III</code>.</p>
     <p>This is the clean formal case Bernstein never quite states: surprise isn't strong signal, and it isn't weak signal. It's a <em>confident</em> signal contradicted by <code>I</code>. A faint, uncertain trail meeting an empty floor isn't surprising — the ants were barely committed to begin with. It's precisely the strength of <code>II</code> that makes the mismatch at <code>III</code> legible as surprise rather than noise. The same asymmetry is what's missing every time Bernstein calls a passage "ambiguous" without specifying how strongly held the listener's prior actually was.</p>
+    <p>In the abductive gloss: <code>Observed</code> = empty floor. <code>Expected</code> = strong trail-code predicting sugar. <code>Mismatch</code> = trail contradicted by floor. <code>Hypotheses</code> = scout ants fanning out to alternative sources, trail strength held provisionally across several candidates. <code>Trial</code> = which alternate trail gets reinforced by the next round of foot traffic — the empirical vote that collapses the softmax.</p>
   </div>
 
   <h2 class="section">The Table</h2>
@@ -188,11 +207,11 @@
       <thead>
         <tr>
           <th>Lecture</th>
-          <th>I — Territory</th>
-          <th>II — Mapped Code</th>
-          <th>III — Surprise / Colony</th>
-          <th>IV — SoftMax / Explorers</th>
-          <th>V — Falsifiable / Cadence</th>
+          <th>I — Territory<span class="th-alt">Observed</span></th>
+          <th>II — Mapped Code<span class="th-alt">Expected</span></th>
+          <th>III — Surprise / Colony<span class="th-alt">Mismatch</span></th>
+          <th>IV — SoftMax / Explorers<span class="th-alt">Hypotheses</span></th>
+          <th>V — Falsifiable / Cadence<span class="th-alt">Trial</span></th>
         </tr>
       </thead>
       <tbody>
@@ -247,7 +266,7 @@
       </tbody>
     </table>
   </div>
-  <p class="table-note">Amber cells break the cycle rather than fill it. Tristan (4/III) declares surprise without naming whose II it's relative to. Mahler 9 (5/V) asserts a cadence with no III or IV shown first. Stravinsky's polytonality (6/IV) isn't miscalibrated softmax — two keys running at once means two support sets superimposed, which the five-position cycle doesn't currently have a slot for.</p>
+  <p class="table-note">Amber cells break the cycle rather than fill it. Tristan (4/III) declares surprise without naming whose II it's relative to. Mahler 9 (5/V) asserts a cadence with no III or IV shown first. Stravinsky's polytonality (6/IV) isn't miscalibrated softmax — two keys running at once means two support sets superimposed, which the five-position cycle doesn't currently have a slot for. In the abductive gloss, that last case reads as two live <code>Expected</code>-codes generating hypotheses in parallel — a genuine open problem for the model, not a filled cell.</p>
 
   <h2 class="section">The Six Lectures</h2>
 
@@ -294,7 +313,7 @@
     Append-only · pentagram — five points, always — logo cycle 105s, no strobing<br>
     Attribution: Ukubona (founder, Stage V) · Anthropic (this instance, compiling) · source: Leonard Bernstein, The Unanswered Question: Six Talks at Harvard (1973/1976)<br>
     Video sources vary by uploader; if any embed goes dark, the lecture is also indexed at leonardbernstein.com/lectures/television-scripts/norton-lectures<br>
-    Ukubona LLC — Ledger 015
+    Ukubona LLC — Ledger 015 · abductive gloss (Observed → Expected → Mismatch → Hypotheses → Trial) appended
   </div>
 </footer>
 
