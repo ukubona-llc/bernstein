@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ukubona · Ledger 015 — The Unanswered Question, Pentadically</title>
+<title>Ukubona · Ledger 015–016 — The Unanswered Question, Pentadically</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230b0a0f'/%3E%3Cpolygon points='50,6 79,95.1 -3.3,38.2 103.3,38.2 21,95.1' fill='none' stroke='%23d9a441' stroke-width='6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -93,6 +93,8 @@
   .callout code{ font-family:'DM Mono', monospace; background:var(--bg-inset); border:1px solid var(--hairline); border-radius:4px; padding:1px 6px; color:var(--teal); font-size:13px; }
   .callout.alt{ border-left-color:var(--amber); }
   .callout.alt .eyebrow{ color:var(--amber); }
+  .callout.critique{ border-left-color:var(--amber); }
+  .callout.critique .eyebrow{ color:var(--amber); }
 
   /* Lecture cards */
   .lecture{ margin-bottom:56px; }
@@ -140,7 +142,7 @@
   <div style="flex:1;">
     <p class="masthead-eyebrow">Ukubona LLC · Append-Only Ledger</p>
     <h1>The Unanswered Question, Pentadically</h1>
-    <p class="masthead-sub">Ledger 015 · Aug 01 2026 · Six Norton Lectures situated inside a shared-II pentad</p>
+    <p class="masthead-sub">Ledger 015–016 · Aug 01 2026 · Six Norton Lectures situated inside a shared-II pentad</p>
     <div class="spine">
       <b>I</b> Territory → <b>II</b> Mapped Code → <b>III</b> Surprise / Colony → <b>IV</b> SoftMax / Explorers → <b>V</b> Falsifiable / Cadence<br>
       Surprise presupposes a shared II. Without it, IV's softmax computes uncertainty over the wrong hypothesis space.<br>
@@ -158,6 +160,7 @@
 <div class="tabs">
   <button class="tab-btn active" data-tab="ledger">Ledger 015</button>
   <button class="tab-btn" data-tab="roundtable">Roundtable · 015a</button>
+  <button class="tab-btn" data-tab="ledger016">Ledger 016</button>
 </div>
 
 <main>
@@ -400,14 +403,51 @@
 
 </div>
 
+<div id="tab-ledger016" class="tab-panel">
+
+  <p class="lede">
+    Bernstein's own word for his method was <em>multidisciplinary</em> — borrowing linguistics, structuralism, phonology, whatever vocabulary's internal structure did new work on the musical case at hand. Ledger 015a's algebraic gloss (Δ, softmax, argmax) is one such borrowing. In that same spirit, the table below runs the I–V pentad through three further vocabularies: statistics, geometry, matrix algebra. Each is offered as an <em>illustrative variant</em>, not a separate proof — and the closing entry draws the one line this addendum won't give up.
+  </p>
+
+  <h2 class="section">Four Vocabularies, One Skeleton</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Algebraic (015a)</th><th>Statistical</th><th>Geometric</th><th>Matrix / Linear</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">I</th><td>observation</td><td>a drawn sample x</td><td>a point in perceptual space</td><td>an input vector v</td></tr>
+        <tr><th scope="row">II</th><td>θ, or Θ if plural</td><td>a prior distribution P(θ)</td><td>a region/manifold the point is checked against</td><td>a basis, or a set of bases if plural</td></tr>
+        <tr><th scope="row">III</th><td>Δ(I, θ)</td><td>−log P(x | θ), surprisal</td><td>distance from point to region</td><td>residual after projection onto the basis</td></tr>
+        <tr><th scope="row">IV</th><td>softmax over Δ</td><td>posterior P(θ | x)</td><td>which candidate region the point falls nearest</td><td>projection coefficients onto competing bases</td></tr>
+        <tr><th scope="row">V</th><td>θ ← argmax</td><td>MAP estimate / belief update</td><td>the region selected as "home"</td><td>the basis retained for the next input</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Four columns, one row-structure. That repetition is the point of the critique below — not a defect to be hidden, but the thing to be honest about.</p>
+
+  <div class="callout">
+    <span class="eyebrow">Why the translations are legitimate</span>
+    <p>A vocabulary earns its place when its internal structure predicts or exposes something the others don't. The geometric gloss is the one that actually adds something here: "distance from a region" naturally handles the case where <code>II</code> is not one point but a manifold with a boundary — which is exactly Stravinsky's polytonality, two regions with a boundary between them rather than one point failing to match. That's a genuine gain over the plain algebraic Δ, which had to add a Θ (set notation) to say the same thing. The statistical and matrix glosses, by contrast, mostly restate the algebraic one in different symbols without adding predictive content of their own in this case — which doesn't make them illegitimate, only redundant here.</p>
+  </div>
+
+  <div class="callout critique">
+    <span class="eyebrow"><span class="contrib-tag contrib-claude">Claude</span> Closing critique</span>
+    <p><strong>Translation is not triangulation.</strong> Bernstein's multidisciplinary method worked when a borrowed vocabulary's structure genuinely predicted something new about the case — Chomskian deep/surface structure gave him an actual claim about the Mozart rewrite, testable against the score. Running the same five-slot skeleton through four notations and calling the agreement "exact" or "remarkable" is the opposite move: four restatements of one claim, dressed as four confirmations. The table above should be read as one skeleton with optional illustrative glosses, not four independent lines of support — and only the geometric column, here, actually did new work.</p>
+    <p><strong>The forced 6-into-5 mapping needs the same self-accounting the ledger already gives Bernstein.</strong> The amber cells in Ledger 015 are good scholarship precisely because they flag "this is an imposed break, not a clean fit" instead of hiding it. The same standard should apply reflexively: collapsing Lecture 3's intrinsic/extrinsic semantics and Lecture 5's twelve-tone crisis into one undifferentiated "derived" bucket erases a distinction the lectures themselves insist on. If the mapping is a deliberate pressure test — which is a legitimate move — it should be labeled as imposition in the ledger's own house style, not narrated as revelation.</p>
+    <p><strong>Open thread for Ledger 017.</strong> Before adding a fifth vocabulary, the more useful next move is deciding which of the four above are load-bearing (predict something) versus decorative (restate something) — and pruning the ledger's own algebra to just the load-bearing ones. A model that keeps expanding vocabularies without ever retiring a redundant one is optimizing for coverage, not truth.</p>
+  </div>
+
+</div>
+
 </main>
 
 <footer>
   <div class="house-rules">
-    Append-only · pentagram — five points, always — logo cycle 105s, no strobing<br>
+    Append-only · pentagram — five points, always · logo cycle 105s, no strobing<br>
     Attribution: Ukubona (founder, Stage V) · Anthropic (this instance, compiling) · source: Leonard Bernstein, The Unanswered Question: Six Talks at Harvard (1973/1976)<br>
     Video sources vary by uploader; if any embed goes dark, the lecture is also indexed at leonardbernstein.com/lectures/television-scripts/norton-lectures<br>
-    Ukubona LLC — Ledger 015 · abductive gloss (Observed → Expected → Mismatch → Hypotheses → Trial) appended · Roundtable 015a (Claude / Grok / GPT) appended as second tab
+    Ukubona LLC — Ledger 015 · abductive gloss appended · Roundtable 015a (Claude / Grok / GPT) appended as second tab · Ledger 016 (multidisciplinary translation vs. triangulation, Claude closing critique) appended as third tab
   </div>
 </footer>
 
