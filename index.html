@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ukubona · Ledger 015 — The Unanswered Question, Pentadically</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230b0a0f'/%3E%3Cpolygon points='50,6 79,95.1 -3.3,38.2 103.3,38.2 21,95.1' fill='none' stroke='%23d9a441' stroke-width='6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0a0f; --bg-raised:#131019; --bg-inset:#0e0c13; --hairline:#262133;
+    --amber:#d9a441; --violet:#8b7cd8; --teal:#4fb8ac;
+    --text-hi:#f2eee6; --text-mid:#b7b0c4; --text-low:#756e87;
+  }
+  html[data-theme="light"]{
+    --bg:#f6f2e8; --bg-raised:#ffffff; --bg-inset:#eee8d8; --hairline:#ddd3ba;
+    --amber:#a5721c; --violet:#6656c4; --teal:#1f8a7d;
+    --text-hi:#211d2b; --text-mid:#4d4660; --text-low:#8b8298;
+  }
+  *{box-sizing:border-box;}
+  html{ transition: background .25s ease; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(139,124,216,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(217,164,65,0.07), transparent 55%),
+      var(--bg);
+    color:var(--text-hi); font-family:'DM Sans', sans-serif; line-height:1.6;
+    transition: background .25s ease, color .25s ease;
+  }
+  a{ color:var(--teal); }
+
+  header{ max-width:980px; margin:0 auto; padding:64px 28px 36px; display:flex; gap:28px; align-items:flex-start; }
+  .pentagram{ flex-shrink:0; width:64px; height:64px; }
+  .pentagram svg{ width:100%; height:100%; animation: spin 105s linear infinite; }
+  @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  @media (prefers-reduced-motion: reduce){ .pentagram svg{ animation:none; } }
+
+  .masthead-eyebrow{ font-family:'DM Mono', monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin:0 0 10px; }
+  h1{ font-family:'DM Serif Display', serif; font-weight:400; font-style:italic; font-size:36px; line-height:1.15; margin:0 0 10px; color:var(--text-hi); }
+  .masthead-sub{ color:var(--text-mid); font-size:15px; margin:0 0 4px; }
+  .spine{ font-family:'DM Mono', monospace; font-size:11px; color:var(--text-low); margin-top:16px; line-height:2; border-top:1px solid var(--hairline); padding-top:12px; }
+  .spine b{ color:var(--violet); font-weight:500; }
+
+  .epigraph{ max-width:980px; margin:0 auto 36px; padding:0 28px; font-family:'DM Serif Display', serif; font-style:italic; font-size:16px; color:var(--amber); opacity:.85; }
+
+  .theme-toggle{ width:36px; height:36px; border-radius:50%; border:1px solid var(--hairline); background:var(--bg-raised); color:var(--text-mid); cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:color .15s, border-color .15s; }
+  .theme-toggle:hover{ color:var(--amber); border-color:var(--amber); }
+  .theme-toggle svg{ width:16px; height:16px; }
+  .theme-toggle .icon-moon{ display:none; }
+  html[data-theme="light"] .theme-toggle .icon-sun{ display:none; }
+  html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
+
+  main{ max-width:980px; margin:0 auto; padding:0 28px 100px; }
+
+  .lede{ color:var(--text-mid); font-size:15.5px; margin-bottom:34px; }
+  .lede strong{ color:var(--text-hi); }
+  .lede code{ font-family:'DM Mono', monospace; background:var(--bg-inset); border:1px solid var(--hairline); border-radius:4px; padding:1px 6px; color:var(--teal); font-size:14px; }
+
+  h2.section{ font-family:'DM Serif Display', serif; font-style:italic; font-weight:400; font-size:22px; color:var(--amber); margin:44px 0 18px; padding-top:20px; border-top:1px solid var(--hairline); }
+
+  /* Figure: pentad wheel */
+  .figure-wrap{ background:var(--bg-raised); border:1px solid var(--hairline); border-radius:12px; padding:24px; margin-bottom:36px; }
+  .figure-cap{ font-family:'DM Mono', monospace; font-size:11px; color:var(--text-low); text-align:center; margin-top:14px; letter-spacing:.03em; }
+  .pentad-wheel{ display:block; margin:0 auto; max-width:460px; width:100%; height:auto; }
+  .pw-label{ font-family:'DM Mono', monospace; font-size:11.5px; fill:var(--text-mid); }
+  .pw-numeral{ font-family:'DM Serif Display', serif; font-style:italic; font-size:15px; fill:var(--amber); }
+  .pw-ring{ fill:none; stroke:var(--hairline); stroke-width:1; }
+  .pw-node{ fill:var(--bg-inset); stroke:var(--violet); stroke-width:1.4; }
+  .pw-arrow{ stroke:var(--teal); stroke-width:1.4; fill:none; marker-end:url(#arrowhead); opacity:.65; }
+
+  /* Table */
+  .table-wrap{ overflow-x:auto; border:1px solid var(--hairline); border-radius:10px; background:var(--bg-raised); margin-bottom:14px; }
+  table{ width:100%; border-collapse:collapse; min-width:920px; }
+  thead th{ font-family:'DM Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--amber); text-align:left; padding:12px 12px; border-bottom:2px solid var(--hairline); background:var(--bg-inset); }
+  thead th:first-child{ width:150px; }
+  tbody th{ text-align:left; font-family:'DM Sans', sans-serif; font-weight:600; font-size:13.5px; color:var(--text-hi); padding:12px; border-bottom:1px solid var(--hairline); vertical-align:top; white-space:nowrap; }
+  tbody td{ font-size:12.5px; color:var(--text-mid); padding:12px; border-bottom:1px solid var(--hairline); vertical-align:top; line-height:1.5; }
+  tbody tr:last-child th, tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:hover td, tbody tr:hover th{ background:var(--bg-inset); }
+  td.break{ color:var(--amber); }
+  .break-tag{ display:inline-block; font-family:'DM Mono', monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--bg); background:var(--amber); border-radius:3px; padding:1px 5px; margin-left:6px; vertical-align:middle; }
+  .table-note{ font-family:'DM Mono', monospace; font-size:11px; color:var(--text-low); margin-bottom:44px; }
+
+  .callout{ margin:0 0 44px; padding:18px 20px; background:var(--bg-raised); border:1px solid var(--hairline); border-left:3px solid var(--teal); border-radius:0 10px 10px 0; }
+  .callout .eyebrow{ display:block; font-family:'DM Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--teal); margin-bottom:8px; }
+  .callout p{ margin:0 0 10px; color:var(--text-mid); font-size:14.5px; line-height:1.6; }
+  .callout p:last-child{ margin-bottom:0; }
+  .callout code{ font-family:'DM Mono', monospace; background:var(--bg-inset); border:1px solid var(--hairline); border-radius:4px; padding:1px 6px; color:var(--teal); font-size:13px; }
+
+  /* Lecture cards */
+  .lecture{ margin-bottom:56px; }
+  .lecture-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:6px; flex-wrap:wrap; }
+  .lecture-name{ font-family:'DM Serif Display', serif; font-size:20px; color:var(--text-hi); }
+  .lecture-num{ font-family:'DM Mono', monospace; font-size:11px; color:var(--violet); }
+  .lecture-note{ color:var(--text-mid); font-size:14px; margin:8px 0 16px; }
+  .lecture-note code{ font-family:'DM Mono', monospace; background:var(--bg-inset); border:1px solid var(--hairline); border-radius:4px; padding:1px 6px; color:var(--teal); font-size:13px; }
+  .video-embed{ border-radius:10px; overflow:hidden; border:1px solid var(--hairline); aspect-ratio:16/9; background:#000; }
+  .video-embed iframe{ width:100%; height:100%; border:0; display:block; }
+
+  footer{ max-width:980px; margin:0 auto; padding:36px 28px 80px; border-top:1px solid var(--hairline); }
+  .house-rules{ font-family:'DM Mono', monospace; font-size:11px; color:var(--text-low); line-height:1.9; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="pentagram">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,6 90.8,74.5 9.2,74.5" fill="none" stroke="#4fb8ac" stroke-width="1.1" opacity="0.5"/>
+      <polygon points="50,6 79,95.1 -3.3,38.2 103.3,38.2 21,95.1" fill="none" stroke="#d9a441" stroke-width="1.3"/>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#8b7cd8" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="50" cy="50" r="2.4" fill="#d9a441"/>
+    </svg>
+  </div>
+  <div style="flex:1;">
+    <p class="masthead-eyebrow">Ukubona LLC · Append-Only Ledger</p>
+    <h1>The Unanswered Question, Pentadically</h1>
+    <p class="masthead-sub">Ledger 015 · Aug 01 2026 · Six Norton Lectures situated inside a shared-II pentad</p>
+    <div class="spine">
+      <b>I</b> Territory → <b>II</b> Mapped Code → <b>III</b> Surprise / Colony → <b>IV</b> SoftMax / Explorers → <b>V</b> Falsifiable / Cadence<br>
+      Surprise presupposes a shared II. Without it, IV's softmax computes uncertainty over the wrong hypothesis space.
+    </div>
+  </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+
+<p class="epigraph">Okubala si Kulaba — counting is not seeing.</p>
+
+<main>
+
+  <p class="lede">
+    Bernstein's six 1973 Norton Lectures, run through the pentad in its <strong>shared-code</strong> reading:
+    <code>I</code> raw substrate, <code>II</code> the code composer and listener must hold in common,
+    <code>III</code> the surprise/threshold event that only means something relative to that shared <code>II</code>,
+    <code>IV</code> a softmax held open across live candidate interpretations, <code>V</code> the falsifiable cadence
+    that closes — or, in two marked cases below, fails to close cleanly — the cycle.
+  </p>
+
+  <div class="figure-wrap">
+    <svg class="pentad-wheel" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="var(--teal)"/>
+        </marker>
+      </defs>
+      <circle class="pw-ring" cx="230" cy="230" r="168"/>
+      <!-- five nodes at 72° apart, starting at top -->
+      <!-- I: 230,52  II: 389,172  III: 328,368  IV: 132,368  V: 71,172 -->
+      <path class="pw-arrow" d="M 262,66 A 168 168 0 0 1 378,192"/>
+      <path class="pw-arrow" d="M 384,206 A 168 168 0 0 1 340,354"/>
+      <path class="pw-arrow" d="M 314,362 A 168 168 0 0 1 146,362"/>
+      <path class="pw-arrow" d="M 120,354 A 168 168 0 0 1 76,206"/>
+      <path class="pw-arrow" d="M 82,192 A 168 168 0 0 1 198,66"/>
+      <circle class="pw-node" cx="230" cy="52" r="30"/>
+      <circle class="pw-node" cx="389" cy="172" r="30"/>
+      <circle class="pw-node" cx="328" cy="368" r="30"/>
+      <circle class="pw-node" cx="132" cy="368" r="30"/>
+      <circle class="pw-node" cx="71" cy="172" r="30"/>
+      <text class="pw-numeral" x="230" y="58" text-anchor="middle">I</text>
+      <text class="pw-numeral" x="389" y="178" text-anchor="middle">II</text>
+      <text class="pw-numeral" x="328" y="374" text-anchor="middle">III</text>
+      <text class="pw-numeral" x="132" y="374" text-anchor="middle">IV</text>
+      <text class="pw-numeral" x="71" y="178" text-anchor="middle">V</text>
+      <text class="pw-label" x="230" y="16" text-anchor="middle">Territory</text>
+      <text class="pw-label" x="440" y="150" text-anchor="start">Mapped Code</text>
+      <text class="pw-label" x="360" y="420" text-anchor="middle">Surprise / Colony</text>
+      <text class="pw-label" x="100" y="420" text-anchor="middle">SoftMax / Explorers</text>
+      <text class="pw-label" x="20" y="150" text-anchor="end">Falsifiable / Cadence</text>
+    </svg>
+    <p class="figure-cap">Fig. 1 — the pentad as a closed cycle. III's surprise-event is only well-defined relative to the II two parties already share; break that link and IV inherits a miscalibrated softmax.</p>
+  </div>
+
+  <div class="callout">
+    <span class="eyebrow">Worked example — household ant colony</span>
+    <p>You spill sugar. Ants find it. Over hours, foot traffic reinforces the pheromone trail — <code>II</code> — until it's a strong, two-way highway back to the mess. You wipe the sugar away.</p>
+    <p>The colony keeps running the highway. That is the surprise-defining condition: <code>strong II</code> (a well-reinforced, high-confidence code) meeting a <code>I</code> that no longer matches what <code>II</code> predicts. No sugar, but the trail still says <em>sugar</em>. That mismatch — not the trail's mere existence, not the ants' mere presence — is <code>III</code>.</p>
+    <p>This is the clean formal case Bernstein never quite states: surprise isn't strong signal, and it isn't weak signal. It's a <em>confident</em> signal contradicted by <code>I</code>. A faint, uncertain trail meeting an empty floor isn't surprising — the ants were barely committed to begin with. It's precisely the strength of <code>II</code> that makes the mismatch at <code>III</code> legible as surprise rather than noise. The same asymmetry is what's missing every time Bernstein calls a passage "ambiguous" without specifying how strongly held the listener's prior actually was.</p>
+  </div>
+
+  <h2 class="section">The Table</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Lecture</th>
+          <th>I — Territory</th>
+          <th>II — Mapped Code</th>
+          <th>III — Surprise / Colony</th>
+          <th>IV — SoftMax / Explorers</th>
+          <th>V — Falsifiable / Cadence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1. Phonology</th>
+          <td>Overtone series, raw acoustic substrate</td>
+          <td>Diatonic scale, tonic-dominant, circle of fifths built off the harmonic series</td>
+          <td class="break">Chromatic overtones read as "ambiguity/expressiveness" — but only against a diatonic II<span class="break-tag">smuggled</span></td>
+          <td>Weighing clarity vs. expressiveness in Mozart 40's chromatic passages</td>
+          <td>BSO performance of Mozart 40 as demonstration</td>
+        </tr>
+        <tr>
+          <th scope="row">2. Syntax</th>
+          <td>Deep structure — underlying melodic/harmonic/rhythmic "strings"</td>
+          <td>Chomskian transformation rules: deletion, transposition, augmentation, embedding</td>
+          <td>Mozart 40 rewrite — "a perfect nightmare of symmetry" from adding 15 bars</td>
+          <td>Hypermeter: assigning strong/weak beats, holding the parse open</td>
+          <td>Surface structure — the actual sounding music</td>
+        </tr>
+        <tr>
+          <th scope="row">3. Semantics</th>
+          <td>Raw musical material pre-metaphor</td>
+          <td>Two metaphor types: intrinsic (Chomskian transforms) vs. extrinsic (nonmusical)</td>
+          <td class="break">"Juliet is the sun" — deletion collapsing an unabridged sentence into instant, claimed-universal perception<span class="break-tag">universal claim</span></td>
+          <td>Beethoven Pastoral held as intrinsic-only, extrinsic reading deliberately suppressed</td>
+          <td>Committed hearing of the Pastoral opening as pure transformation</td>
+        </tr>
+        <tr>
+          <th scope="row">4. Ambiguity</th>
+          <td>Raw tonal material — Berlioz, Wagner, Debussy</td>
+          <td>Common-practice tonal grammar, three ambiguity types (phonological/syntactic/semantic) named as the shared code</td>
+          <td class="break">Tristan's chromaticism declared "maximally ambiguous" — a III-claim smuggled past its own II<span class="break-tag">whose II?</span></td>
+          <td>Tristan's suspended, unresolved chromatic wandering</td>
+          <td>Faun's ending — E major confirmed only at the final cadence</td>
+        </tr>
+        <tr>
+          <th scope="row">5. 20th-C Crisis</th>
+          <td>"Tonality is innate" — overtone series as inescapable substrate</td>
+          <td>Twelve-tone method proposed as a rival, deliberately atonal code</td>
+          <td>The crisis itself: twelve-tone "unquestionably tied" to the tonal system it rejects</td>
+          <td>Adorno's Schoenberg-vs-Stravinsky held open; Berg's row simulating tonal hierarchy</td>
+          <td class="break">Berg's B♭ major landing; Mahler 9 Adagio asserted as "death march" with no III/IV shown; Ives' G major "held into eternity"<span class="break-tag">V without III/IV</span></td>
+        </tr>
+        <tr>
+          <th scope="row">6. Poetry of Earth</th>
+          <td>Folk, "prehistoric," jazz, French idioms Stravinsky draws on</td>
+          <td>Polytonality as code; the "X-factor" of text-plus-music</td>
+          <td>Semantic ambiguity from Stravinsky's deliberate distance from borrowed styles</td>
+          <td class="break">Eclecticism — tonal, twelve-tone, polytonal held simultaneously<span class="break-tag">two support sets</span></td>
+          <td>Closing call for eclecticism "so long as tonality predominates"; full Oedipus Rex</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Amber cells break the cycle rather than fill it. Tristan (4/III) declares surprise without naming whose II it's relative to. Mahler 9 (5/V) asserts a cadence with no III or IV shown first. Stravinsky's polytonality (6/IV) isn't miscalibrated softmax — two keys running at once means two support sets superimposed, which the five-position cycle doesn't currently have a slot for.</p>
+
+  <h2 class="section">The Six Lectures</h2>
+
+  <div class="lecture">
+    <div class="lecture-head"><span class="lecture-name">1 · Musical Phonology</span><span class="lecture-num">Oct 9, 1973</span></div>
+    <p class="lecture-note">Watch for the moment <code>I</code> (the overtone series) quietly becomes <code>II</code> (a specific diatonic code) — the Balinese pentatonic aside is where a foreign II gets treated as if it reduces to the same physical substrate.</p>
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/8fHi36dvTdE" title="Bernstein Norton Lectures 1 — Musical Phonology" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+
+  <div class="lecture">
+    <div class="lecture-head"><span class="lecture-name">2 · Musical Syntax</span><span class="lecture-num">Oct 1973</span></div>
+    <p class="lecture-note">The Mozart 40 rewrite is the cleanest empirical test in the whole series: is "nightmare of symmetry" a property of the music, or of the 18th-century periodic-phrase II Bernstein's ear already holds?</p>
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/U3HLqCHO08s" title="Bernstein Norton Lectures 2 — Musical Syntax" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+
+  <div class="lecture">
+    <div class="lecture-head"><span class="lecture-name">3 · Musical Semantics</span><span class="lecture-num">Oct 23, 1973</span></div>
+    <p class="lecture-note">Watch whether Bernstein can actually hold the Pastoral as pure intrinsic transformation, or whether the extrinsic shepherd-and-storm content keeps leaking back into his own commentary — you can't cleanly subtract a code you're already inside of.</p>
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/66uggpSM7CU" title="Bernstein Norton Lectures 3 — Musical Semantics" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+
+  <div class="lecture">
+    <div class="lecture-head"><span class="lecture-name">4 · The Delights and Dangers of Ambiguity</span><span class="lecture-num">1973</span></div>
+    <p class="lecture-note">The whole lecture is the shared-II test at scale. When Tristan is called "maximally ambiguous," ask: ambiguous relative to which fixed support set — Wagner's contemporaries, or a 1973 Harvard ear with a century more chromatic exposure?</p>
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/A7O5zcQPRQQ" title="Bernstein Norton Lectures 4 — The Delights and Dangers of Ambiguity" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+
+  <div class="lecture">
+    <div class="lecture-head"><span class="lecture-name">5 · The Twentieth Century Crisis</span><span class="lecture-num">1973</span></div>
+    <p class="lecture-note">Two different IIs are required to both be true at once here — twelve-tone "fighting" tonal hearing, while also being judged rigorous on its own terms. Mark exactly where the Mahler 9 Adagio commentary drops analysis for pure assertion.</p>
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/RI123H9R-68" title="Bernstein Norton Lectures 5 — The Twentieth Century Crisis" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+
+  <div class="lecture">
+    <div class="lecture-head"><span class="lecture-name">6 · The Poetry of Earth</span><span class="lecture-num">1973</span></div>
+    <p class="lecture-note">Stravinsky's polytonality is the one passage that doesn't fit the cycle at all — worth timestamping as the place the pentad's own five-position model needs pressure, not another correction inside it.</p>
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/ViQ0uxWZU8I" title="Bernstein Norton Lectures 6 — The Poetry of Earth" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="house-rules">
+    Append-only · pentagram — five points, always — logo cycle 105s, no strobing<br>
+    Attribution: Ukubona (founder, Stage V) · Anthropic (this instance, compiling) · source: Leonard Bernstein, The Unanswered Question: Six Talks at Harvard (1973/1976)<br>
+    Video sources vary by uploader; if any embed goes dark, the lecture is also indexed at leonardbernstein.com/lectures/television-scripts/norton-lectures<br>
+    Ukubona LLC — Ledger 015
+  </div>
+</footer>
+
+<script>
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const html = document.documentElement;
+    html.dataset.theme = html.dataset.theme === 'light' ? 'dark' : 'light';
+  });
+</script>
+
+</body>
+</html>
