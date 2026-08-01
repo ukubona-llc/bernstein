@@ -106,6 +106,24 @@
 
   footer{ max-width:980px; margin:0 auto; padding:36px 28px 80px; border-top:1px solid var(--hairline); }
   .house-rules{ font-family:'DM Mono', monospace; font-size:11px; color:var(--text-low); line-height:1.9; }
+
+  /* Tabs */
+  .tabs{ max-width:980px; margin:0 auto; padding:0 28px; display:flex; gap:8px; }
+  .tab-btn{ font-family:'DM Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-mid); background:var(--bg-raised); border:1px solid var(--hairline); border-bottom:none; border-radius:9px 9px 0 0; padding:11px 20px; cursor:pointer; transition:color .15s, border-color .15s, background .15s; position:relative; top:1px; }
+  .tab-btn:hover{ color:var(--amber); }
+  .tab-btn.active{ color:var(--amber); border-color:var(--hairline); background:var(--bg); }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+  main{ border-top:1px solid var(--hairline); padding-top:36px; }
+
+  .contrib-tag{ display:inline-block; font-family:'DM Mono', monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; border-radius:3px; padding:1px 6px; margin-right:6px; }
+  .contrib-claude{ color:var(--bg); background:var(--teal); }
+  .contrib-grok{ color:var(--bg); background:var(--violet); }
+  .contrib-gpt{ color:var(--bg); background:var(--amber); }
+
+  .eqn-block{ font-family:'DM Mono', monospace; font-size:15px; color:var(--text-hi); background:var(--bg-inset); border:1px solid var(--hairline); border-radius:8px; padding:16px 20px; margin:14px 0; text-align:center; letter-spacing:.02em; overflow-x:auto; }
+  .eqn-legend{ font-family:'DM Mono', monospace; font-size:11.5px; color:var(--text-mid); line-height:2; }
+  .eqn-legend b{ color:var(--amber); }
 </style>
 </head>
 <body>
@@ -137,7 +155,13 @@
 
 <p class="epigraph">Okubala si Kulaba — counting is not seeing.</p>
 
+<div class="tabs">
+  <button class="tab-btn active" data-tab="ledger">Ledger 015</button>
+  <button class="tab-btn" data-tab="roundtable">Roundtable · 015a</button>
+</div>
+
 <main>
+<div id="tab-ledger" class="tab-panel active">
 
   <p class="lede">
     Bernstein's six 1973 Norton Lectures, run through the pentad in its <strong>shared-code</strong> reading:
@@ -306,6 +330,76 @@
     <div class="video-embed"><iframe src="https://www.youtube.com/embed/ViQ0uxWZU8I" title="Bernstein Norton Lectures 6 — The Poetry of Earth" allowfullscreen loading="lazy"></iframe></div>
   </div>
 
+</div>
+
+<div id="tab-roundtable" class="tab-panel">
+
+  <p class="lede">
+    Ledger 015 read back to itself by three outside models. Not for validation — each is optimizing for something
+    different — but because the disagreement is where the pentad's own edges show. <span class="contrib-tag contrib-claude">Claude</span> stays
+    close to the text and asks whether the scholarship holds. <span class="contrib-tag contrib-grok">Grok</span> rewrites
+    the cycle as a computational pipeline. <span class="contrib-tag contrib-gpt">GPT</span> keeps the abductive frame but
+    relocates where the unresolved problem actually lives.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Contributor</th>
+          <th>Optimizing for</th>
+          <th>Core move</th>
+          <th>Key line</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><span class="contrib-tag contrib-claude">Claude</span></th>
+          <td>Scholarship — does the argument hold together</td>
+          <td>Stays inside the ledger's own terms; confirms the amber breaks are diagnostic, not decorative</td>
+          <td>"Ambiguity is relational, not intrinsic — Tristan is ambiguous <em>relative to</em> a listener possessing a particular II."</td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="contrib-tag contrib-grok">Grok</span></th>
+          <td>Formalization — can the pentad run as an architecture</td>
+          <td>Maps I–V onto a loss/gradient pipeline; treats polytonality as a Jacobian of parallel priors resolved by a pivot chord</td>
+          <td>"A pivot matrix ... the listener is holding two distinct baselines simultaneously until a decisive cadence collapses the superposition."</td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="contrib-tag contrib-gpt">GPT</span></th>
+          <td>Model refinement — where does the pentad actually strain</td>
+          <td>Reframes II as a <em>distribution</em> over codes rather than one fixed code; shows this absorbs polytonality without a sixth stage</td>
+          <td>"II is no longer scalar — it's a manifold of possible grammars."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Claude and Grok both treat II as a single held code. GPT's contribution is noticing that Stage II was already doing two jobs — memory and prior — and that separating them is what actually dissolves the polytonality problem, rather than requiring a new slot in the cycle.</p>
+
+  <div class="callout alt">
+    <span class="eyebrow">The equation — GPT's reframing of the pentad</span>
+    <div class="eqn-block">I<sub>t</sub> → II<sub>t</sub> → Δ(I<sub>t</sub>, II<sub>t</sub>) → P(H&nbsp;|&nbsp;Δ) → II<sub>t+1</sub></div>
+    <p class="eqn-legend">
+      <b>I</b> — observation (Observed)<br>
+      <b>II</b> — current world model, held as a distribution over codes, not one fixed code (Expected)<br>
+      <b>Δ(I, II)</b> — prediction error: the divergence between what arrived and what the held distribution assigned probability to (Mismatch)<br>
+      <b>P(H | Δ)</b> — posterior over competing explanations, weighted by that error (Hypotheses)<br>
+      <b>II<sub>t+1</sub></b> — the committed update; not a fresh "Trial" output so much as the world-model itself being rewritten (Trial)
+    </p>
+    <p>Where the ledger's original spine treats <code>V</code> as a closing cadence external to the cycle, GPT's version folds <code>V</code> back into <code>II</code> — the trial doesn't just resolve one round, it <em>becomes</em> next round's prior. That is a genuinely different claim from "the cycle closes": it says the cycle never fully closes, it only re-opens one step downstream.
+    </p>
+  </div>
+
+  <div class="callout">
+    <span class="eyebrow">Notes — what the reframing buys</span>
+    <p><strong>Mismatch as a probability gap, not a binary.</strong> GPT rewrites the ant-colony surprise as <code>Δ = I − P(II)</code>: the trail assigns <code>P(sugar | trail) ≈ 1</code>; the swept floor delivers <code>P(sugar | observation) ≈ 0</code>. Surprise is that gap, not the mere fact of an empty floor. This is the same asymmetry the ledger's worked example already argued for — GPT just gives it a probabilistic notation.</p>
+    <p><strong>II was always doing two jobs.</strong> A listener carrying the whole score in memory can still hold multiple live priors about what a passage means harmonically. GPT's move is to stop treating "memory" and "prior" as the same slot — <code>II</code> is memory (what was heard) feeding a distribution (what's expected next), and it's the distribution, not the memory, that Stravinsky's polytonality actually stresses.</p>
+    <p><strong>Grok's pivot-matrix and GPT's manifold are the same fix from two directions.</strong> Grok keeps a single pipeline but lets it branch at <code>II</code> into simultaneous baselines resolved by a pivot chord (a musical mechanism). GPT keeps the five-slot count but redefines what occupies <code>II</code> (a formal mechanism). Neither adds a sixth stage — both dissolve the polytonality break from inside the existing cycle rather than patching around it.</p>
+    <p><strong>Open thread for Ledger 016.</strong> If <code>V</code> feeds directly into the next round's <code>II</code>, the "falsifiable cadence" language in the spine needs a second look — a cadence that immediately reopens as a prior isn't closing anything in the way the word "falsifiable" implies. Worth deciding whether that's a wording fix or an actual structural change to the covenant.</p>
+  </div>
+
+</div>
+
 </main>
 
 <footer>
@@ -313,7 +407,7 @@
     Append-only · pentagram — five points, always — logo cycle 105s, no strobing<br>
     Attribution: Ukubona (founder, Stage V) · Anthropic (this instance, compiling) · source: Leonard Bernstein, The Unanswered Question: Six Talks at Harvard (1973/1976)<br>
     Video sources vary by uploader; if any embed goes dark, the lecture is also indexed at leonardbernstein.com/lectures/television-scripts/norton-lectures<br>
-    Ukubona LLC — Ledger 015 · abductive gloss (Observed → Expected → Mismatch → Hypotheses → Trial) appended
+    Ukubona LLC — Ledger 015 · abductive gloss (Observed → Expected → Mismatch → Hypotheses → Trial) appended · Roundtable 015a (Claude / Grok / GPT) appended as second tab
   </div>
 </footer>
 
@@ -321,6 +415,15 @@
   document.getElementById('themeToggle').addEventListener('click', () => {
     const html = document.documentElement;
     html.dataset.theme = html.dataset.theme === 'light' ? 'dark' : 'light';
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
   });
 </script>
 
